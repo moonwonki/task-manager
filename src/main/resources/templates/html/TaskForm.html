@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Task Create</title>
-    <link rel="stylesheet" th:href="@{../css/TaskForm.css}" href="../css/TaskForm.css">
+    <link rel="stylesheet" th:href="@{../css/navBar.css}" href="../../static/css/navBar.css">
+    <link rel="stylesheet" th:href="@{../css/TaskForm.css}" href="../../static/css/TaskForm.css">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" th:href="@{/home}">Home</a>
+    <a th:href="@{/team/(teamId) (teamId = ${teamId})}">Menu</a>
+    <a th:href="@{/logout}">Logout</a>
+</div>
 <div class="card-box">
     <div class="task-create-view-title">Task Creation</div>
     <form th:action="@{/{teamId}/createTask (teamId=${teamId})}" method="post" id="task-create-form">

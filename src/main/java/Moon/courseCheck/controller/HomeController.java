@@ -175,6 +175,7 @@ public class HomeController {
     }
     //th:href="@{/task/{teamId}/{taskId}/error (teamId = ${teamId}, taskId = ${originTaskId})}"
 
+    //태스크 지우기
     @PostMapping("task/{teamId}/{taskId}/delete")
     public String deleteTask(Authentication authentication, @PathVariable("teamId") Long teamId, @PathVariable("taskId") Long originTaskId){
         String username = authentication.getName();
@@ -183,6 +184,27 @@ public class HomeController {
 
         taskService.deleteTask(memberId, teamId, originTaskId);
         return "redirect:/team/" + teamId;
+    }
+
+    //팀 나가기
+    @GetMapping("/team/{teamId}/leaveTeam")
+    public String getLeaveTeam(Model model, Authentication authentication, @PathVariable("teamId") Long teamId){
+        String username = authentication.getName();
+        Long memberId = memberService.getMemberIdByUsername(username);
+        if (!teamService.checkMemberInTeam(teamId, memberId)) return "redirect:/home";
+        model.addAttribute("teamId", teamId);
+
+        return "html/leaveTeam";
+    }
+
+    @PostMapping("team/{teamId}/leaveTeam")
+    public String leaveTeam(Authentication authentication, @PathVariable("teamId") Long teamId){
+        String username = authentication.getName();
+        Long memberId = memberService.getMemberIdByUsername(username);
+        if (!teamService.checkMemberInTeam(teamId, memberId)) return "redirect:/home";
+
+        teamService.fireMember(memberId, teamId);
+        return "redirect:/team/"+teamId;
     }
 
 }

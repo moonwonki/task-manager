@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Team Selection Page</title>
-    <link rel="stylesheet" th:href="@{../css/TeamSelect.css}" href="../css/TeamSelect.css">
+    <link rel="stylesheet" th:href="@{../css/navBar.css}" href="../../static/css/navBar.css">
+    <link rel="stylesheet" th:href="@{../css/TeamSelect.css}" href="../../static/css/TeamSelect.css">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" th:href="@{/home}">Home</a>
+    <a th:href="@{/logout}">Logout</a>
+</div>
 <div class="container">
     <div class="title-text">Select Team</div>
     <div class="team-list">

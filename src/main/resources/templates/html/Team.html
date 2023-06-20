@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Card Box Page</title>
+    <link rel="stylesheet" th:href="@{../css/navBar.css}" href="../../static/css/navBar.css">
     <link rel="stylesheet" th:href="@{../css/Team.css}" href="../../static/css/Team.css">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" th:href="@{/home}">Home</a>
+    <a th:href="@{/team/(teamId) (teamId = ${teamId})}">Menu</a>
+    <a th:href="@{/logout}">Logout</a>
+</div>
 <div class="container">
     <div class="card-box">
         <div class="team-name" th:text="${teamName}">teamName</div>
@@ -25,12 +31,12 @@
                 <span></span>
                 매니저 권한 부여하기 (미구현)
             </a>
-            <a>
+            <a th:href="@{/team/{teamId}/leaveTeam (teamId = ${teamId})}">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                팀 나가기 (미구현)
+                팀 나가기
             </a>
         </div>
         <hr>

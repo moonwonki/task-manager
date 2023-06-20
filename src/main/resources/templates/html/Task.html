@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Task</title>
+    <link rel="stylesheet" th:href="@{../css/navBar.css}" href="../../static/css/navBar.css">
     <link rel="stylesheet" th:href="@{/css/Task.css}" href="../../static/css/Task.css">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" th:href="@{/home}">Home</a>
+    <a th:href="@{/team/(teamId) (teamId = ${teamId})}">Menu</a>
+    <a th:href="@{/logout}">Logout</a>
+</div>
 <!-- 기본적인 구성은 똑같다. 다만 isManager 속성에 따라 다를 예정이다.-->
 <!-- 달라야 하는 부분은 먼저 버튼에 해당하는 a tag 부분이다. manager라면 진도율, manger가 아니라면 버튼이 나와야 한다.-->
 <div class="card-box">
@@ -15,11 +21,13 @@
     <div class="task-box">
         <div class="task-content" th:text="${dto.content}">콘텐츠</div>
     </div>
+    <hr/>
     <div th:if="${isManager} == true" class="progress-container">
         <a class="success-count">성공: [[${count.successCount}]]</a>
         <a class="error-count">에러: [[${count.errorCount}]]</a>
         <a class="idle-count">대기 : [[${count.idleCount}]]</a>
     </div>
+
     <div class="button-container">
         <a class="success-btn" onclick="successSubmitForm()">
             <span></span>
@@ -43,7 +51,7 @@
             대기
         </a>
     </div>
-
+    <hr/>
     <a th:href="@{/team/{teamId} (teamId = ${teamId})}" class="back-button">
         뒤로 가기
     </a>

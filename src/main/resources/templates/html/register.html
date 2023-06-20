@@ -10,8 +10,8 @@
 <div class="register-box">
     <form  th:action="@{/register}" th:method="post" id="registerForm">
         <h2>회원가입</h2>
-        <h2>invalid nickname!</h2>
-        <h2>invalid username!</h2>
+        <h2 th:if="${registerValid != null and registerValid['nickname'] == false}">invalid nickname!</h2>
+        <h2 th:if="${registerValid != null and registerValid['username'] == false}">invalid username!</h2>
         <div class="user-box">
             <input type="text" id="username" name="username" required>
             <label for="username">Username</label>

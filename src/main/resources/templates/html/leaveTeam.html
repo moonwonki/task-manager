@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Page</title>
+  <link rel="stylesheet" th:href="@{../css/navBar.css}" href="../../static/css/navBar.css">
+  <link rel="stylesheet" th:href="@{/css/leaveTeam.css}" href="../../static/css/leaveTeam.css">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+</head>
+<body>
+<div class="topnav">
+  <a class="active" th:href="@{/home}">Home</a>
+  <a th:href="@{/team/(teamId) (teamId = ${teamId})}">Menu</a>
+  <a th:href="@{/logout}">Logout</a>
+</div>
+<div class="confirm-box">
+  <h2>Are You Sure?</h2>
+  <form th:action="@{/team/{teamId}/leaveTeam (teamId = ${teamId})}" th:method="post" id="leaveTeam">
+    <a type="submit" onclick="submitForm()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Yes
+    </a>
+    <br/>
+    <a th:href="@{/team/{teamId} (teamId = ${teamId})}">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      No
+    </a>
+  </form>
+</div>
+<script>
+  function submitForm() {
+    document.getElementById("leaveTeam").submit();
+  }
+</script>
+
+</body>
+</html>

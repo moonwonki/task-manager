@@ -14,13 +14,15 @@ public class TaskService {
 
     private final OriginTaskRepository originTaskRepository;
     private final DistributedTaskRepository distributedTaskRepository;
+    private final TeamOriginTaskRepository teamOriginTaskRepository;
 
-    public TaskService(TeamRepository teamRepository, MemberRepository memberRepository, TeamManagerRepository teamManagerRepository, OriginTaskRepository originTaskRepository, DistributedTaskRepository distributedTaskRepository) {
+    public TaskService(TeamRepository teamRepository, MemberRepository memberRepository, TeamManagerRepository teamManagerRepository, OriginTaskRepository originTaskRepository, DistributedTaskRepository distributedTaskRepository, TeamOriginTaskRepository teamOriginTaskRepository) {
         this.teamRepository = teamRepository;
         this.memberRepository = memberRepository;
         this.teamManagerRepository = teamManagerRepository;
         this.originTaskRepository = originTaskRepository;
         this.distributedTaskRepository = distributedTaskRepository;
+        this.teamOriginTaskRepository = teamOriginTaskRepository;
     }
 
 
@@ -56,6 +58,7 @@ public class TaskService {
 
     //관리자가 특정 task를 지운다.
     public void deleteTask(Long memberId, Long teamId, Long originTaskId){
+        teamOriginTaskRepository.deleteAllByOriginTaskId(originTaskId);
         originTaskRepository.deleteById(originTaskId);
         for (DistributedTask distTask : distributedTaskRepository.findAllByOriginTaskId(originTaskId)){
             distributedTaskRepository.deleteById(distTask.getId());

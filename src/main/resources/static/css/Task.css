@@ -46,6 +46,11 @@ body {
     font-size: 2vh;
 }
 
+.card-box hr {
+    width: 100%;
+    margin: 1vh auto;
+}
+
 .progress-container {
     width: 80%;
     display: flex;

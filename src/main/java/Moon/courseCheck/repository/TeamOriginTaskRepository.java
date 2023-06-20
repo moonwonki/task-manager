@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TeamOriginTaskRepository extends JpaRepository<TeamOriginTask, Long> {
     List<TeamOriginTask> findAllByTeamId(Long teamId);
+
+    void deleteAllByOriginTaskId(Long originTaskid);
 }

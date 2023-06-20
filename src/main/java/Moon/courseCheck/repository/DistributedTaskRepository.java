@@ -12,4 +12,6 @@ public interface DistributedTaskRepository extends JpaRepository<DistributedTask
     List<DistributedTask> findAllByOriginTaskId(Long originTaskId);
 
     long countByOriginTaskIdAndStatus(Long originTaskId, String status);
+
+    void deleteByMemberIdAndOriginTaskId(Long memberId, Long originTaskId);
 }

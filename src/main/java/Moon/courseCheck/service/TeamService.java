@@ -4,6 +4,7 @@ import Moon.courseCheck.domain.*;
 import Moon.courseCheck.dto.DistributedTaskDto;
 import Moon.courseCheck.dto.TeamSelectionDto;
 import Moon.courseCheck.repository.*;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -85,7 +86,11 @@ public class TeamService {
 
         for (TeamOriginTask teamOriginTask : teamOriginTaskList){
             Optional<DistributedTask> distTask = distributedTaskRepository.findByMemberIdAndOriginTaskId(memberId, teamOriginTask.getOriginTaskId());
-            if (distTask.isPresent()) distributedTaskDtoList.add(DistributedTaskDto.getInstance(distTask.get(), originTaskRepository.findById(teamOriginTask.getOriginTaskId()).get()));
+            if (distTask.isPresent()) {
+                if (originTaskRepository.findById(teamOriginTask.getOriginTaskId()).isPresent()){
+                    distributedTaskDtoList.add(DistributedTaskDto.getInstance(distTask.get(), originTaskRepository.findById(teamOriginTask.getOriginTaskId()).get()));
+                }
+            }
         }
         return distributedTaskDtoList;
     }
@@ -159,8 +164,12 @@ public class TeamService {
     }
 
     //해당 팀에서 멤버가 나간다.
-    public Long fireMember(Long userId, Long teamId){
-        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
+    @Transactional
+    public void fireMember(Long memberId, Long teamId){
+        teamMemberRepository.deleteTeamMemberByMemberIdAndTeamId(memberId, teamId);
+        for (TeamOriginTask teamOriginTask: teamOriginTaskRepository.findAllByTeamId(teamId)){
+            distributedTaskRepository.deleteByMemberIdAndOriginTaskId(memberId, teamOriginTask.getId());
+        }
     }
 
 
@@ -197,5 +206,7 @@ public class TeamService {
     public boolean checkMemberInTeam(Long teamId, Long memberId){
         return teamMemberRepository.existsTeamMemberByTeamIdAndMemberId(teamId, memberId);
     }
+
+
 
 }

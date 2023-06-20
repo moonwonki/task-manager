@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Team create</title>
+    <link rel="stylesheet" th:href="@{../css/navBar.css}" href="../../static/css/navBar.css">
     <link rel="stylesheet" th:href="@{../css/TeamForm.css}" href="../css/TeamForm.css">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" th:href="@{/home}">Home</a>
+    <a th:href="@{/logout}">Logout</a>
+</div>
 <div class="team-form-box">
     <form  th:action="@{/createTeam}" th:method="post" id="teamForm">
         <h2>팀 생성하기</h2>
