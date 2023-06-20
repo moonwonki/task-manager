@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Selection Page</title>
+    <link rel="stylesheet" th:href="@{../css/TeamSelect.css}" href="../css/TeamSelect.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="title-text">Select Team</div>
+    <div class="team-list">
+        <a th:each="team : ${teamList}" class="team-item" th:href="@{/team/{teamId} (teamId = ${team.id})}">
+            <span class="team-name" th:text="${team.name}">팀 이름</span> <span class="team-member-num">[[${team.memberNum}]]명</span>
+        </a>
+        <!--
+        <div class="team-item">
+            <span class="team-name" >팀 이름</span> (Members: <span>15)</span>
+        </div>
+        <div class="team-item">
+            <span class="team-name" >팀 이름</span> (Members: <span>15)</span>
+        </div>
+        <div class="team-item">
+            <span class="team-name" >팀 이름</span> (Members: <span>15)</span>
+        </div>
+        <div class="team-item">
+            <span class="team-name" >팀 이름</span> (Members: <span>15)</span>
+        </div>
+        <div class="team-item">
+            <span class="team-name" >팀 이름</span> (Members: <span>15)</span>
+        </div>
+        <div class="team-item">
+            <span class="team-name" >팀 이름</span> (Members: <span>15)</span>
+        </div>
+           -->
+    </div>
+</div>
+</body>
+</html>

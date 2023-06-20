@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Task</title>
+    <link rel="stylesheet" th:href="@{../css/Home.css}" href="../css/Home.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+</head>
+<body>
+<br/>
+<a href="#" class="logInAndOut-button">로그인 : [[${username}]]</a>
+<div class="title-h2">Task Manager</div>
+<!--슬라이더 메뉴 -->
+<div class="slider-container">
+    <div class="slider-wrapper">
+        <div class="slider-item">
+            <a class="slider-make-team" th:href="@{/createTeam}" >팀 만들기</a>
+        </div>
+        <div class="slider-item">
+            <a class="slider-join-team" th:href="@{/join}" >팀 참가하기</a>
+        </div>
+        <div class="slider-item">
+            <a class="slider-my-team" th:href="@{/teamSelect}" >내 팀으로</a>
+        </div>
+    </div>
+</div>
+
+<!--슬라이더 메뉴 페이지-->
+<div class="slider-navigation">
+    <a onclick="changeSlide(0)" class="active">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        팀 만들기
+    </a>
+    <a onclick="changeSlide(1)" class="active">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        팀 참가하기
+    </a>
+    <a onclick="changeSlide(2)" class="active">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        내 팀으로
+    </a>
+</div>
+
+<script>
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const sliderNavigationButtons = document.querySelectorAll('.slider-navigation button');
+
+    function changeSlide(index) {
+        sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
+
+        // Set active class to the selected button
+        sliderNavigationButtons.forEach(button => button.classList.remove('active'));
+        sliderNavigationButtons[index].classList.add('active');
+    }
+</script>
+
+</body>
+</html>

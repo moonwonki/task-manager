@@ -1,0 +1,231 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #19283a;
+    font-family: NanumSquareAcb,NanumSquareBold;
+}
+.logInAndOut-button{
+    text-decoration: none;
+    color: white;
+    margin-left: 2vh;
+    margin-top: 1vh;
+    float: left;
+}
+.title-h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 5vh;
+    font-size: 10vh;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60vh;
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+
+    margin: 10vh auto;
+    box-shadow: 0 2.5vh 4.166vh rgba(0,0,0,.6);
+    border-radius: 2.5vh;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    height: 100%;
+}
+
+.slider-item {
+    flex: 0 0 100%;
+    height: 100%;
+    width: 60vh;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.5);
+    border-color: black;
+    text-align: center;
+    margin: auto;
+}
+
+.slider-navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15vh;
+}
+
+.slider-navigation button {
+    border: none;
+    background-color: #fff;
+    color: #333;
+    padding: 1vh 2vh;
+    margin: 0 1vh;
+    cursor: pointer;
+}
+
+.slider-navigation button.active {
+    font-weight: bold;
+}
+
+.slider-item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-decoration: none;
+
+    font-size: 8vh;
+    font-weight: bold;
+
+    animation: blink 1s infinite;
+}
+
+.slider-item .slider-join-team {
+    color: #43b0be;
+}
+
+.slider-item .slider-make-team {
+    color: #be8943;
+}
+
+.slider-item .slider-my-team {
+    color: #be4376;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0.6;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    70% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.slider-navigation a {
+    position: relative;
+    display: inline-block;
+    padding: 1vh 2vh;
+    color: #03e9f4;
+    font-size: 2vh;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin: 2vh ;
+    letter-spacing: 0.8vh;
+}
+
+.slider-navigation a:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 2.5vh;
+    box-shadow: 0 0 1.25vh #03e9f4,
+    0 0 6.25vh #03e9f4,
+    0 0 12.5vh #03e9f4,
+    0 0 25vh #03e9f4;
+}
+
+.slider-navigation a span {
+    position: absolute;
+    display: block;
+}
+
+.slider-navigation a span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 0.2vh;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+    50%,100% {
+        left: 100%;
+    }
+}
+
+.slider-navigation a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 0.2vh;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s;
+}
+
+@keyframes btn-anim2 {
+    0% {
+        top: -100%;
+    }
+    50%,100% {
+        top: 100%;
+    }
+}
+
+.slider-navigation a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 0.2vh;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s;
+}
+
+@keyframes btn-anim3 {
+    0% {
+        right: -100%;
+    }
+    50%,100% {
+        right: 100%;
+    }
+}
+
+.slider-navigation a span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 0.1vh;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #03e9f4);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s;
+}
+
+@keyframes btn-anim4 {
+    0% {
+        bottom: -100%;
+    }
+    50%,100% {
+        bottom: 100%;
+    }
+}

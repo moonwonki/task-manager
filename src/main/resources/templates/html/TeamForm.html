@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team create</title>
+    <link rel="stylesheet" th:href="@{../css/TeamForm.css}" href="../css/TeamForm.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+</head>
+<body>
+<div class="team-form-box">
+    <form  th:action="@{/createTeam}" th:method="post" id="teamForm">
+        <h2>팀 생성하기</h2>
+        <div class="warning-div" th:if="${isValidList != null and isValidList['name'] == false}">invalid Team Name!</div>
+        <div class="warning-div" th:if="${isValidList != null and isValidList['inviteCode'] == false}">invalid Team Invite Code!</div>
+        <div class="input-box">
+            <input type="text" id="name" name="name" required>
+            <label for="name">Team Name</label>
+        </div>
+        <div class="input-box">
+            <input type="text" id="inviteCode" name="inviteCode" required>
+            <label for="inviteCode">Invite Code</label>
+        </div>
+        <a id="team-create-btn" type="submit" onclick="submitForm()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            팀 생성하기
+        </a>
+        <a id="go-back-btn" th:href="@{/home}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            뒤로 가기
+        </a>
+    </form>
+</div>
+<script>
+    function submitForm() {
+        document.getElementById("teamForm").submit();
+    }
+</script>
+</body>
+</html>

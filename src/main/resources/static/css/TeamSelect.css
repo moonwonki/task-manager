@@ -1,0 +1,71 @@
+html {
+    height: 100%;
+}
+
+body  {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'NanumSquareAcb', NanumSquareBold;
+    background: linear-gradient(#141e30, #243b55);
+}
+
+.container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10vh;
+
+}
+
+.title-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 1vh auto;
+    font-size: 10vh;
+}
+
+.team-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.team-item {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns content to the left */
+    margin-bottom: 1vh;
+    width: 100vh;
+    height: 14vh;
+    border-radius: 1rem;
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+}
+
+.team-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease-in-out;
+}
+
+
+
+.team-name {
+    width: 70%;
+    color: #03e9f4;
+    font-size: 3vh;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.team-member-num {
+    color: #c95959;
+    font-size: 3vh;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{../css/login.css}" href="../css/login.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+</head>
+<body>
+<div class="login-box">
+    <h2>초대 코드 입력</h2>
+    <form th:action="@{/join}" th:method="post" id="inviteForm">
+        <div class="user-box" >
+            <input type="text" id="inviteCode" name="inviteCode" required>
+            <label for="inviteCode">Invite Code</label>
+        </div>
+        <a type="submit" onclick="submitForm()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            초대코드
+        </a>
+        <a id="go-back-btn" th:href="@{/home}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            뒤로 가기
+        </a>
+    </form>
+</div>
+<script>
+    function submitForm() {
+        document.getElementById("inviteForm").submit();
+    }
+</script>
+</body>
+</html>

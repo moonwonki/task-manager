@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+    <link rel="stylesheet" th:href="@{/css/Task.css}" href="../../static/css/Task.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+</head>
+<body>
+<!-- 기본적인 구성은 똑같다. 다만 isManager 속성에 따라 다를 예정이다.-->
+<!-- 달라야 하는 부분은 먼저 버튼에 해당하는 a tag 부분이다. manager라면 진도율, manger가 아니라면 버튼이 나와야 한다.-->
+<div class="card-box">
+    <div class="task-view-title" th:text="${dto.title}">제목</div>
+
+    <div class="task-box">
+        <div class="task-content" th:text="${dto.content}">콘텐츠</div>
+    </div>
+    <div th:if="${isManager} == true" class="progress-container">
+        <a class="success-count">성공: [[${count.successCount}]]</a>
+        <a class="error-count">에러: [[${count.errorCount}]]</a>
+        <a class="idle-count">대기 : [[${count.idleCount}]]</a>
+    </div>
+    <div class="button-container">
+        <a class="success-btn" onclick="successSubmitForm()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            성공
+        </a>
+        <a class="error-btn" onclick="errorSubmitForm()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            에러
+        </a>
+        <a class="idle-btn" onclick="idleSubmitForm()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            대기
+        </a>
+    </div>
+
+    <a th:href="@{/team/{teamId} (teamId = ${teamId})}" class="back-button">
+        뒤로 가기
+    </a>
+    <a th:if="${isManager} == true" class="delete-button" onclick="deleteSubmitForm()">
+        삭제하기
+    </a>
+
+    <form id = "success-form" th:action="@{/task/{teamId}/{taskId}/success (teamId = ${teamId}, taskId = ${originTaskId})}" method="post" hidden="hidden">
+        successForm
+    </form>
+    <form id = "error-form" th:action="@{/task/{teamId}/{taskId}/error (teamId = ${teamId}, taskId = ${originTaskId})}" method="post" hidden="hidden">
+        errorForm
+    </form>
+    <form id = "idle-form" th:action="@{/task/{teamId}/{taskId}/idle (teamId = ${teamId}, taskId = ${originTaskId})}" method="post" hidden="hidden">
+        idleForm
+    </form>
+
+    <form id = "delete-form" th:action="@{/task/{teamId}/{taskId}/delete (teamId = ${teamId}, taskId = ${originTaskId})}" method="post" hidden="hidden">
+        deleteForm
+    </form>
+
+</div>
+<script>
+    function successSubmitForm() {
+        document.getElementById("success-form").submit();
+    }
+
+    function errorSubmitForm() {
+        document.getElementById("error-form").submit();
+    }
+    function idleSubmitForm() {
+        document.getElementById("idle-form").submit();
+    }
+
+    function deleteSubmitForm(){
+        document.getElementById("delete-form").submit();
+    }
+</script>
+</body>
+</html>
