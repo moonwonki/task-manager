@@ -9,8 +9,8 @@
 
 ## 개발 진행상황
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/vE_qrYzdfYY" title="2023.06.20 Task Manager 프로젝트 개발일지 업로드" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
-</iframe>
+6월 20일자.
+https://www.youtube.com/embed/vE_qrYzdfYY
 
 
 ## 계획중...
