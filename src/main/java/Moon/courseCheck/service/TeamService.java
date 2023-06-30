@@ -5,9 +5,7 @@ import Moon.courseCheck.dto.DistributedTaskDto;
 import Moon.courseCheck.dto.TeamSelectionDto;
 import Moon.courseCheck.repository.*;
 import jakarta.transaction.Transactional;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 
@@ -73,7 +71,10 @@ public class TeamService {
     public List<TeamSelectionDto> getTeamList(Long memberId){
         List<TeamSelectionDto> teamSelectionDtoList= new ArrayList<>();
         for (TeamMember teamMember : teamMemberRepository.findAllByMemberId(memberId)){
-            teamSelectionDtoList.add(TeamSelectionDto.getInstance(teamRepository.findById(teamMember.getTeamId()).get(), teamMemberRepository.countAllByTeamId(teamMember.getTeamId())));
+            Team team = teamRepository.findById(teamMember.getTeamId()).get();
+            Long numberOfMembers = teamMemberRepository.countAllByTeamId(teamMember.getTeamId());
+            boolean isManager = teamManagerRepository.existsTeamManagerByMemberIdAndTeamId(memberId, team.getId());
+            teamSelectionDtoList.add(TeamSelectionDto.getInstance(team, numberOfMembers, isManager));
         }
         return teamSelectionDtoList;
     }

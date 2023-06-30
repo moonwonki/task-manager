@@ -10,14 +10,32 @@ body  {
     background: linear-gradient(#141e30, #243b55);
 }
 
+a{
+    text-decoration: none;
+}
+span {
+    text-decoration: none;
+    color: #3f536c;
+}
+
 .container {
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height:100%;
+
+}
+
+.card-box {
+    width: 80%;
+    background-color: rgba(0,0,0,.5);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    margin: 1rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    margin-top: 10vh;
-
 }
 
 .title-text{
@@ -25,7 +43,6 @@ body  {
     align-items: center;
     justify-content: center;
     color: white;
-    margin: 1vh auto;
     font-size: 10vh;
 }
 
@@ -33,7 +50,7 @@ body  {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5vh;
+    width: 100%;
 }
 
 .team-item {
@@ -42,23 +59,21 @@ body  {
     align-items: center;
     justify-content: flex-start; /* Aligns content to the left */
     margin-bottom: 1vh;
-    width: 100vh;
-    height: 14vh;
+    width: 80%;
+    height: 10vh;
     border-radius: 1rem;
     background: rgba(0,0,0,.5);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
 
 .team-item:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(153, 168, 192);
     transition: background 0.3s ease-in-out;
 }
 
 
 
 .team-name {
-    width: 70%;
+    width: 33%;
     color: #03e9f4;
     font-size: 3vh;
     text-align: left;
@@ -66,6 +81,7 @@ body  {
 }
 
 .team-member-num {
+    width: 33%;
     color: #c95959;
     font-size: 3vh;
 }

@@ -10,7 +10,7 @@
 <body>
 <div class="topnav">
     <a class="active" th:href="@{/home}">Home</a>
-    <a th:href="@{/team/(teamId) (teamId = ${teamId})}">Menu</a>
+    <a th:href="@{/MyPage}">MyPage</a>
     <a th:href="@{/logout}">Logout</a>
 </div>
 <div class="container">
@@ -47,6 +47,7 @@
             <div class="flex-container">
                 <div class="task-name" th:text="${task.title}">제목</div>
             </div>
+            <div>현재 상태: [[${task.status}]]</div>
         </div>
     </a>
 </div>
